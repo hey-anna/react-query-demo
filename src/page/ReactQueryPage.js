@@ -28,9 +28,13 @@ export const ReactQueryPage = () => {
     // queryFn: () => {
     //   return axios.get("http://localhost:3004/posts");
     // }, // 내가 호출하고 싶은 api
+
+    //
     select: (data) => {
       return data.data;
     },
+    // 캐시 타임 조절(갈비지컬렉트타임, 쓰레기걸러지는시간?)
+    gcTime: 5000, // 5초가 지나면 캐시를 비워버리게 세팅 < V5 > cacheTime (하위버전 ) > 설정하지않으면 기본값은 5분
   });
   console.log("## 데이타", data, isLoading);
   console.log("error", isError, error);
@@ -56,3 +60,9 @@ export const ReactQueryPage = () => {
 };
 
 // 이름 정해주고, 무슨 api인지 딱 말해주면, queryKey가 알아서 뾰로롱 탁하고 부르게 됨
+
+// * 조절 가능
+// 3초에 한번씩 호출
+// 내가 윈도우 돌아왔을때 호출하고 싶다 다 조절 가능
+// api 통제가 중요한 이유, 실제서버에 부하를 주기 때문에 통제가 중요
+// 실제 서버에 부담주는에는 api 호출 임 > api호출 쓸데없이 많이되면 성능에 안좋다. > 큰영양 준다. > api 호출, 얼마나 자주하는지, 얼마나 아껴하는지 중요하다.
