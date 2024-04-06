@@ -28,13 +28,15 @@ export const ReactQueryPage = () => {
     // queryFn: () => {
     //   return axios.get("http://localhost:3004/posts");
     // }, // 내가 호출하고 싶은 api
-
+    staleTime: 60000, // 내가 호출하고 싶을때 api를 호출할수 있다 // 기본값은 0 // 한번호출하면 땡치는 api에 많이 사용
     //
     select: (data) => {
       return data.data;
     },
     // 캐시 타임 조절(갈비지컬렉트타임, 쓰레기걸러지는시간?)
-    gcTime: 5000, // 5초가 지나면 캐시를 비워버리게 세팅 < V5 > cacheTime (하위버전 ) > 설정하지않으면 기본값은 5분
+    gcTime: 10000, // 5초가 지나면 캐시를 비워버리게 세팅 < V5 > cacheTime (하위버전 ) > 설정하지않으면 기본값은 5분
+
+    // !! staleTime < gcTime
   });
   console.log("## 데이타", data, isLoading);
   console.log("error", isError, error);
