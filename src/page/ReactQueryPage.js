@@ -37,6 +37,10 @@ export const ReactQueryPage = () => {
     gcTime: 10000, // 5초가 지나면 캐시를 비워버리게 세팅 < V5 > cacheTime (하위버전 ) > 설정하지않으면 기본값은 5분
 
     // !! staleTime < gcTime
+
+    refetchInterval: 3000, // api 호출을 3초마다 하고싶다
+    refetchOnMount: false, // 내가 컴포넌트 들어와도 패치가 안되게 설정 // 컴포넌트 시작할때 패치되게 할거냐 말거냐(다시들어갈때) // true는 매번 호출 = 기본값은 true
+    refetchOnWindowFocus: true, // 화면 들어가면 window에 포커스되면 자동으로 리프레쉬 되게 // 유저가 항상 최신 데이터를 볼 수 있음 // 유저한테 새로운 데이터를 빨리빨리 보여줘야할때 사용하면 좋다.
   });
   console.log("## 데이타", data, isLoading);
   console.log("error", isError, error);
