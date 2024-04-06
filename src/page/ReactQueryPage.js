@@ -41,6 +41,10 @@ export const ReactQueryPage = () => {
     // refetchInterval: 3000, // api 호출을 3초마다 하고싶다
     // refetchOnMount: false, // 내가 컴포넌트 들어와도 패치가 안되게 설정 // 컴포넌트 시작할때 패치되게 할거냐 말거냐(다시들어갈때) // true는 매번 호출 = 기본값은 true
     // refetchOnWindowFocus: true, // 화면 들어가면 window에 포커스되면 자동으로 리프레쉬 되게 // 유저가 항상 최신 데이터를 볼 수 있음 // 유저한테 새로운 데이터를 빨리빨리 보여줘야할때 사용하면 좋다.
+
+    enabled: false, // 초기에 호출되지 않음 // 기본값은 true
+    // enabled: keyword // 키워드가 있으면 검색하는 조건문을 만든다든지
+    // enabled: !!keyword // 키워드가 없으면 api 호출을 안한다든지
   });
   console.log("## 데이타", data, isLoading);
   console.log("error", isError, error);
@@ -53,7 +57,8 @@ export const ReactQueryPage = () => {
   }
   return (
     <div>
-      {data.map((item) => (
+      {/* 데이터가 있을 때만 */}
+      {data?.map((item) => (
         <div>{item.title}</div>
       ))}
       <button onClick={refetch}>post리스트 다시 들고오기</button>
