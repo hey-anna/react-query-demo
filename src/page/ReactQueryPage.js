@@ -61,7 +61,7 @@ export const ReactQueryPage = () => {
 
   // 유즈 커스텀 훅 만들기
   // usePostQuery(postId)
-  const { data, isLoading, isError, error, refetch } = usePostQuery(1);
+  const { data, isLoading, isError, error, refetch } = usePostQuery();
   console.log("## 데이타", data, isLoading);
   console.log("error", isError, error);
 
@@ -74,9 +74,9 @@ export const ReactQueryPage = () => {
   return (
     <div>
       {/* 데이터가 있을 때만 */}
-      {/* {data?.map((item) => (
+      {data?.map((item) => (
         <div>{item.title}</div>
-      ))} */}
+      ))}
       <button onClick={refetch}>post리스트 다시 들고오기</button>
     </div>
     // <div>
